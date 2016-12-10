@@ -4,11 +4,13 @@ using System.Collections;
 public class EnemyScript : MonoBehaviour {
 	private float speed;
 
+	GameObject scoreUITextGO;
 	public GameObject explosionGO;
 
 	// Use this for initialization
 	void Start () {
 		speed = 2f;
+		scoreUITextGO = GameObject.FindGameObjectWithTag ("ScoreTextTag");
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,8 @@ public class EnemyScript : MonoBehaviour {
 		if((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag")){
 			PlayExplosion ();
 
+			//add 100 points to the score
+			scoreUITextGO.GetComponent<GameScore> ().Score += 100;
 			Destroy(gameObject); //Destroy this enemy ship
 		}
 	}

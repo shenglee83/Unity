@@ -26,6 +26,9 @@ public class Player2DMoveScript : MonoBehaviour {
 		//update the lives UI text
 		LivesUIText.text = lives.ToString();
 
+		//Reset the player Game object position to center of the screen
+		transform.position = new Vector2(0, 0);
+
 		//set this player game object active
 		gameObject.SetActive(true);
 	}
@@ -54,7 +57,9 @@ public class Player2DMoveScript : MonoBehaviour {
     //Shoot bullet using button key
     void PlayerShoot() {
         if (Input.GetKeyDown("space")) {
-        
+        	//play the laser sound effect
+			GetComponent<AudioSource>().Play();
+
 			//Instantiate the 1st bullet
 			GameObject bullet01 = (GameObject) Instantiate (playerBulletGO);
 			bullet01.transform.position = bulletPosition1.transform.position; //Set the bullet initial position
