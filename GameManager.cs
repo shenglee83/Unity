@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject playerShip;
 	public GameObject enemySpawner; 
 	public GameObject GameOverGO;// reference to the game over image
+	public GameObject scoreUITextGO;
 
 	public enum GameManagerState {
 		Opening, Gameplay, GameOver
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour {
 				break;
 
 			case GameManagerState.Gameplay:
+			//Reset the score
+			scoreUITextGO.GetComponent<GameScore>().Score = 0;
 				//hide play button on game play state
 				playButton.SetActive (false);
 				// set the player active and int the player lives
